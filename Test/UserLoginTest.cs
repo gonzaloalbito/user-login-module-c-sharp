@@ -43,4 +43,14 @@ public class UserLoginTest
         Assert.Equal(2, loggedUsers.Count);
         Assert.Equal(expectedUsers, loggedUsers);
     }
+
+    [Fact]
+    public void ShouldGetSessionsFromExternalService()
+    {
+        UserLoginService service = new UserLoginService();
+
+        var externalSessions = service.GetExternalSessions();
+
+        Assert.Equal(7, externalSessions);
+    }
 }

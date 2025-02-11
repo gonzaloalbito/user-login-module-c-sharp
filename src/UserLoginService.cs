@@ -20,6 +20,11 @@ public class UserLoginService
         return _loggedUsers;
     }
 
+    public int GetExternalSessions()
+    {
+        SessionManager sessionManager = new FacebookSessionManager();
+        return sessionManager.GetSessions();
+    }
 
     private bool IsUserAlreadyLogged(User user)
     {
