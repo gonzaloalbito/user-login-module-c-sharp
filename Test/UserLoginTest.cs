@@ -105,4 +105,28 @@ public class UserLoginTest
         _sessionManager.Verify(sm => sm.Logout(It.IsAny<string>()), Times.Never);
         Assert.Equal("User not found", result);
     }
+
+    [Fact]
+    public void ShouldReturnServiceNotAvailableWhenFacebookServiceFails()
+    {
+        User user = new User("user1");
+        _service.ManualLogin(user);
+        _sessionManager.Setup(sm => sm.Logout(user.UserName)).Throws<ServiceNotAvailableException>();
+
+        var result = _service.Logout(user);
+
+        Assert.Equal("Service not available", result);
+    }
+
+    [Fact]
+    public void ShouldReturnUserNotLoggedInWhenUserIsNotLoggedInFacebook()
+    {
+        User user = new User("user1");
+        _service.ManualLogin(user);
+        _sessionManager.Setup(sm => sm.Logout(user.UserName)).Throws<UserNotLoggedInException>();
+
+        var result = _service.Logout(user);
+
+        Assert.Equal("User not logged in Facebook", result);
+    }
 }

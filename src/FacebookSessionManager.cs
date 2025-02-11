@@ -1,4 +1,8 @@
 namespace UserLoginKata.Src;
+using System;
+
+public class ServiceNotAvailableException : Exception { }
+public class UserNotLoggedInException : Exception { }
 
 public class FacebookSessionManager : SessionManager
 {

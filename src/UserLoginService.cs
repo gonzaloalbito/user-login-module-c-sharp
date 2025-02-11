@@ -35,10 +35,21 @@ public class UserLoginService(SessionManager sessionManager)
             return "User not found";
         }
 
-        bool logoutSuccess = _sessionManager.Logout(user.UserName);
-        _loggedUsers.RemoveAll(u => u.UserName == user.UserName);
+        try
+        {
+            bool logoutSuccess = _sessionManager.Logout(user.UserName);
+            _loggedUsers.RemoveAll(u => u.UserName == user.UserName);
 
-        return "User logged out";
+            return "User logged out";
+        }
+        catch (ServiceNotAvailableException)
+        {
+            return "Service not available";
+        }
+        catch (UserNotLoggedInException)
+        {
+            return "User not logged in Facebook";
+        }
     }
 
 
