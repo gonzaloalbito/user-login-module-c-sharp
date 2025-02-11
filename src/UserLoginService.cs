@@ -15,6 +15,12 @@ public class UserLoginService
         return "User successfully logged in";
     }
 
+    public List<User> GetLoggedUsers()
+    {
+        return _loggedUsers;
+    }
+
+
     private bool IsUserAlreadyLogged(User user)
     {
         return _loggedUsers.Any(loggedUser => loggedUser.UserName == user.UserName);

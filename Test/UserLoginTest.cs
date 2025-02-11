@@ -27,4 +27,20 @@ public class UserLoginTest
 
         Assert.Equal("User already logged in", result);
     }
+
+    [Fact]
+    public void ShouldGetLoggedUsers()
+    {
+        UserLoginService service = new UserLoginService();
+        User user1 = new User("User1");
+        User user2 = new User("User2");
+        var expectedUsers = new List<User> { user1, user2 };
+        service.ManualLogin(user1);
+        service.ManualLogin(user2);
+
+        var loggedUsers = service.GetLoggedUsers();
+
+        Assert.Equal(2, loggedUsers.Count);
+        Assert.Equal(expectedUsers, loggedUsers);
+    }
 }
