@@ -4,9 +4,15 @@ public class UserLoginService
 {
     private List<User> _loggedUsers = new();
 
-    public string ManualLogin()
+    public string ManualLogin(User user)
     {
-        return "user logged";
+        if (IsUserAlreadyLogged(user))
+        {
+            return "User already logged in";
+        }
+
+        _loggedUsers.Add(user);
+        return "User successfully logged in";
     }
 
     private bool IsUserAlreadyLogged(User user)

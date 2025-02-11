@@ -8,10 +8,23 @@ public class UserLoginTest
     [Fact]
     public void ShouldLogAUser()
     {
-        var service = new UserLoginService();
+        UserLoginService service = new UserLoginService();
+        User user = new User("User");
 
-        var result = service.ManualLogin();
+        var result = service.ManualLogin(user);
 
-        Assert.Equal("user logged", result);
+        Assert.Equal("User successfully logged in", result);
+    }
+
+    [Fact]
+    public void ShouldCheckIfUserIsAlreadyLogged()
+    {
+        UserLoginService service = new UserLoginService();
+        User user = new User("User");
+        service.ManualLogin(user);
+
+        var result = service.ManualLogin(user);
+
+        Assert.Equal("User already logged in", result);
     }
 }

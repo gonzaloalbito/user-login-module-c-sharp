@@ -96,3 +96,4 @@
 /Users/stefan/Formation/Technosylva/UserLoginKata/obj/Debug/net8.0/UserLoginKata.pdb
 /Users/stefan/Formation/Technosylva/UserLoginKata/obj/Debug/net8.0/UserLoginKata.genruntimeconfig.cache
 /Users/stefan/Formation/Technosylva/UserLoginKata/obj/Debug/net8.0/ref/UserLoginKata.dll
+/Users/stefan/Formation/Technosylva/UserLoginKata/obj/Debug/net8.0/UserLoginKata.sourcelink.json
