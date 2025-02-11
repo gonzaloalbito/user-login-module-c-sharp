@@ -61,4 +61,48 @@ public class UserLoginTest
 
         Assert.Equal(expectedSessions, externalSessions);
     }
+
+    [Fact]
+    public void ShouldLoginUserWithCorrectCredentials()
+    {
+        _sessionManager.Setup(sm => sm.Login("user1Name", "user1Password")).Returns(true);
+
+        var result = _service.Login("user1Name", "user1Password");
+
+        Assert.Equal("Login correcto", result);
+    }
+
+    [Fact]
+    public void ShouldNotLoginUserWithIncorrectCredentials()
+    {
+        _sessionManager.Setup(sm => sm.Login("user1Name", "user1Password")).Returns(false);
+
+        var result = _service.Login("user1Name", "user1Password");
+
+        Assert.Equal("Login incorrecto", result);
+    }
+
+    [Fact]
+    public void ShouldLogoutUserIfUserIsAlreadyLoggedIn()
+    {
+        User user = new User("user1");
+        _service.ManualLogin(user);
+        _sessionManager.Setup(sm => sm.Logout(user.UserName)).Returns(true);
+
+        var result = _service.Logout(user);
+
+        _sessionManager.Verify(sm => sm.Logout(user.UserName), Times.Once);
+        Assert.Equal("User logged out", result);
+    }
+
+    [Fact]
+    public void ShouldNotLogoutUserIfUserIsNotFound()
+    {
+        User user = new User("user1");
+
+        var result = _service.Logout(user);
+
+        _sessionManager.Verify(sm => sm.Logout(It.IsAny<string>()), Times.Never);
+        Assert.Equal("User not found", result);
+    }
 }

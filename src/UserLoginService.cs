@@ -16,6 +16,32 @@ public class UserLoginService(SessionManager sessionManager)
         return "User successfully logged in";
     }
 
+    public string Login(string userName, string password)
+    {
+        bool isUserLogged = _sessionManager.Login(userName, password);
+
+        if (!isUserLogged)
+        {
+            return "Login incorrecto";
+        }
+
+        return "Login correcto";
+    }
+
+    public string Logout(User user)
+    {
+        if (!IsUserAlreadyLogged(user))
+        {
+            return "User not found";
+        }
+
+        bool logoutSuccess = _sessionManager.Logout(user.UserName);
+        _loggedUsers.RemoveAll(u => u.UserName == user.UserName);
+
+        return "User logged out";
+    }
+
+
     public List<User> GetLoggedUsers()
     {
         return _loggedUsers;
