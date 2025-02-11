@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("UserLoginKata")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8dd94b0739e4894db52e47b5207dbad00a170794")]
 [assembly: System.Reflection.AssemblyProductAttribute("UserLoginKata")]
 [assembly: System.Reflection.AssemblyTitleAttribute("UserLoginKata")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
