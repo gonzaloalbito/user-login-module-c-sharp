@@ -1,8 +1,9 @@
 namespace UserLoginKata.Src;
 
-public class UserLoginService
+public class UserLoginService(SessionManager sessionManager)
 {
-    private List<User> _loggedUsers = new();
+    private readonly List<User> _loggedUsers = new();
+    private readonly SessionManager _sessionManager = sessionManager;
 
     public string ManualLogin(User user)
     {
@@ -22,8 +23,7 @@ public class UserLoginService
 
     public int GetExternalSessions()
     {
-        SessionManager sessionManager = new FacebookSessionManager();
-        return sessionManager.GetSessions();
+        return _sessionManager.GetSessions();
     }
 
     private bool IsUserAlreadyLogged(User user)

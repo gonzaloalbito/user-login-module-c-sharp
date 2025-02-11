@@ -97,3 +97,8 @@
 /Users/stefan/Formation/Technosylva/UserLoginKata/obj/Debug/net8.0/UserLoginKata.genruntimeconfig.cache
 /Users/stefan/Formation/Technosylva/UserLoginKata/obj/Debug/net8.0/ref/UserLoginKata.dll
 /Users/stefan/Formation/Technosylva/UserLoginKata/obj/Debug/net8.0/UserLoginKata.sourcelink.json
+/Users/stefan/Formation/Technosylva/UserLoginKata/bin/Debug/net8.0/Castle.Core.dll
+/Users/stefan/Formation/Technosylva/UserLoginKata/bin/Debug/net8.0/Moq.dll
+/Users/stefan/Formation/Technosylva/UserLoginKata/bin/Debug/net8.0/System.Diagnostics.EventLog.dll
+/Users/stefan/Formation/Technosylva/UserLoginKata/bin/Debug/net8.0/runtimes/win/lib/net6.0/System.Diagnostics.EventLog.Messages.dll
+/Users/stefan/Formation/Technosylva/UserLoginKata/bin/Debug/net8.0/runtimes/win/lib/net6.0/System.Diagnostics.EventLog.dll
