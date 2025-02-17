@@ -5,8 +5,9 @@ public class UserLoginService
     public const string SUCCESS_LOGIN = "User successfully logged in";
     public const string ERROR_ALREADY_LOGGED_IN = "User successfully logged in";
     
-    
     private List<User> _loggedUsers = new();
+
+    public IEnumerable<string> LoggedInUsers => this._loggedUsers.Select(x => x.UserName);
 
     public string ManualLogin(User user)
     {
