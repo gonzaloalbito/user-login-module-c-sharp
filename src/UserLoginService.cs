@@ -7,7 +7,7 @@ public class UserLoginService
 
     private List<User> _loggedUsers = new();
 
-    public IEnumerable<string> LoggedInUsers() => this._loggedUsers.Select(x => x.UserName);
+    public IEnumerable<string> GetLoggedInUsers() => this._loggedUsers.Select(x => x.UserName);
 
     public string ManualLogin(User user)
     {

@@ -49,8 +49,7 @@ public class UserLoginTest
             service.ManualLogin(user);
         }
 
-        Assert.Equal(TEST_LOCAL_USERNAMES.Length, service.LoggedInUsers().Count());
-       //Assert.Collection(service.LoggedInUsers, x=>TEST_USERNAMES.Contains(x));
+        Assert.Equal(TEST_LOCAL_USERNAMES, service.GetLoggedInUsers());
     }
     
     [Fact]
