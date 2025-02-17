@@ -5,10 +5,10 @@ namespace UserLoginKata.Test;
 
 public class UserLoginTest
 {
-    protected const string TEST_USERNAME = "user";
+    protected const string TEST_USERNAME = "MyAwesomeUsername";
     
     [Fact]
-    public void ShouldLogAUser()
+    public void UserShouldLogInIfNotLoggedIn()
     {
         var service = new UserLoginService();
 
@@ -19,7 +19,7 @@ public class UserLoginTest
     }
     
     [Fact]
-    public void ShouldNotLogTwice()
+    public void UserShouldNotLogInIfAlreadyLoggedIn()
     {
         var service = new UserLoginService();
 
