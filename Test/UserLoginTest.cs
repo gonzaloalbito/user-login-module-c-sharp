@@ -1,3 +1,4 @@
+using Moq;
 using UserLoginKata.Src;
 using Xunit;
 
@@ -42,5 +43,15 @@ public class UserLoginTest
         }
 
         Assert.Equal(TEST_LOCAL_USERNAMES, service.GetLoggedInUsers());
+    }
+    
+    [Fact]
+    public void ShouldReturnExternalSessionsForAService()
+    {
+        Mock<SessionManager> sessionManager = new Mock<SessionManager>();
+        sessionManager.Setup(x => x.GetSessions()).Returns(TEST_LOCAL_USERNAMES.Count);
+        UserLoginService service = new UserLoginService(sessionManager.Object);
+        
+        Assert.Equal(TEST_LOCAL_USERNAMES.Count, service.GetExternalSessions());
     }
 }

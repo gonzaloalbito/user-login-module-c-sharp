@@ -1,9 +1,11 @@
+/*
+using Moq;
 using UserLoginKata.Src;
 using Xunit;
 
 namespace UserLoginKata.Test;
 
-public class FacebookLoginTest
+public class FacebookManagerTest
 {
     protected const string TEST_FACEBOOK_USERNAME = "MyFacebookUsername";
     protected const string TEST_FACEBOOK_PASSWORD = "MyFacebookPassword";
@@ -14,16 +16,29 @@ public class FacebookLoginTest
                                                                                 };
     
     [Fact]
+    public void FacebookUserShouldLogInIfNotLoggedIn()
+    {
+        UserLoginService service = new UserLoginService();
+        
+        FacebookSessionManager fbSessionManager = new FacebookSessionManager();
+        bool result = fbSessionManager.Login(TEST_FACEBOOK_USERNAME, TEST_FACEBOOK_PASSWORD);
+
+        Assert.Equal(true, result);
+    }
+    
+    [Fact]
     public void ShouldReturnExternalSessionsForAService()
     {
         UserLoginService service = new UserLoginService();
-        FacebookSessionManager fbService = new FacebookSessionManager();
+        Mock<FacebookSessionManager> fbSessionManager = new Mock<FacebookSessionManager>();
         
         foreach(KeyValuePair<string, string> user in TEST_FACEBOOK_USERS)
         {
-            fbService.Login(user.Key, user.Value);
+            fbSessionManager.Login(user.Key, user.Value);
         }
         
-        Assert.Equal(TEST_FACEBOOK_USERS.Count, service.GetExternalSessions());
+        fbSessionManager.Setup(x => x.GetSessions()).Returns(TEST_FACEBOOK_USERS.Count);
+        
+        Assert.Equal(TEST_FACEBOOK_USERS.Count, fbSessionManager.GetSessions());
     }
-}
+}*/

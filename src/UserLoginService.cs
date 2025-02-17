@@ -7,6 +7,14 @@ public class UserLoginService
 
     private List<User> _loggedUsers = new();
 
+    private SessionManager externalSessionManager = new FacebookSessionManager();
+
+
+    public UserLoginService(SessionManager externalSessionManager=null)
+    {
+        this.externalSessionManager = externalSessionManager?? this.externalSessionManager;
+    }
+    
     public IEnumerable<string> GetLoggedInUsers() => this._loggedUsers.Select(x => x.UserName);
 
     public string ManualLogin(User user)
@@ -27,7 +35,6 @@ public class UserLoginService
 
     public int GetExternalSessions()
     {
-        FacebookSessionManager facebookSessionManager = new FacebookSessionManager();
-        return facebookSessionManager.GetSessions();
+        return externalSessionManager.GetSessions();
     }
 }

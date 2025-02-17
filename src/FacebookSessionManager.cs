@@ -2,7 +2,7 @@ namespace UserLoginKata.Src;
 
 public class FacebookSessionManager : SessionManager
 {
-    public int GetSessions()
+    public virtual int GetSessions()
     {
         //Imaginad que esto en realidad realiza una llamada al API de Facebook
         return (int)(new Random().NextDouble() * 100);
